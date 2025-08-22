@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Gallery - Support Icon</title>
-    <!-- Include Lucide Icons -->
+    <title>Spreadsheet ID Generator</title>
+ 
+ 
+     <!-- Include Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <!-- Include Font Awesome for other icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    
+    
     <style>
         :root {
             --primary: #DF1783;
@@ -38,7 +43,163 @@
             color: var(--text);
             transition: background-color 0.3s, color 0.3s;
         }
-        .container { max-width: 1400px; margin: 0 auto; padding: 2rem 4rem; }
+
+                .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            margin: 0 auto; padding: 2rem 4rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .title {
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: var(--card-bg);
+            color: var(--text);
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: #c41270;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .result-container {
+            margin-top: 25px;
+            display: none;
+        }
+
+        .result-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .result-box {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .result {
+            flex: 1;
+            word-break: break-all;
+            padding-right: 10px;
+            color: var(--text);
+        }
+
+        .copy-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #3db5a9;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+        }
+        
+
         
         .top-menu-bar {
             position: fixed;
@@ -46,7 +207,7 @@
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 2rem);
-            max-width: 1400px;
+            max-width: 1200px;
             z-index: 1100;
             background-color: var(--card-bg);
             box-shadow: var(--shadow);
@@ -412,18 +573,25 @@
             font-size: 0.9rem;
             color: var(--text-light);
         }
+        
+        
+        
     </style>
 </head>
+
+
 <body>
+
+
     <div class="container">
         <div class="top-menu-bar">
             <div class="top-menu-content">
                 <div class="logo-container">
-                    <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/0c2d26503a8c7847080b2ce8174e622f1274782c.png" alt="App Logo">
-                    <span id="appBrandNameDisplay">Easy Gallery</span>
+                    <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/7a8d827e98c4791a121f99ec3d8dd80f2a94ef5a.png" alt="App Logo">
+                    <span id="appBrandNameDisplay">Magic Toolbox</span>
                 </div>
                 
-                    <div class="top-menu-actions">
+             <div class="top-menu-actions">
 		  
 	
 			<!-- Settings Icon -->
@@ -441,15 +609,14 @@
             </div>
             </div>
         </div>
-        
- 
+   
         <div class="card">
             <h2 class="title">Spreadsheet ID Generator</h2>
-            <p class="subtitle">Extract the unique ID from your Google Sheets URL</p>
+            <p class="subtitle">Extract the unique ID from your Google Sheets URL for free.</p>
             
             <div class="input-group">
                 <label for="spreadsheetUrl">Spreadsheet URL</label>
-                <input type="url" id="spreadsheetUrl" placeholder="https://docs.google.com/spreadsheets/d/1VmQ05Xq3WCOb3GLMnhcSZ7PKDq1S3uvBjXwsITPshBY/edit?gid=0#gid=0" autocomplete="off">
+                <input type="url" id="spreadsheetUrl" placeholder="https://docs.google.com/spreadsheets/d/1Vm.../edit?gid=0#gid=0" autocomplete="off">
             </div>
             
             <button class="btn" id="generateBtn">Generate ID</button>
@@ -568,5 +735,7 @@
             alert('Settings panel would open here.');
         });
     </script>
+</body>
+</html>
 </body>
 </html>
