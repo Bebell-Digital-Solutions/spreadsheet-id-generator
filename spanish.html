@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Google Spreadsheet ID</title>
+ 
+    <!-- Include Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Include Font Awesome for other icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+   <!-- Favicon -->
+    <link rel="icon" href="https://bucket.mlcdn.com/a/3336/3336910/images/9c0d3012a1fbf19394de0ad0c6488e0ad37e5231.png">    
+
+    
+    
+    <style>
+        :root {
+            --primary: #DF1783;
+            --primary-light: #f8a4d4;
+            --secondary: #2d3748;
+            --accent: #4fd1c5;
+            --text: #2d3748;
+            --text-light: #a0aec0;
+            --bg: #f7fafc;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --border-color: #e2e8f0;
+        }
+        .dark-mode {
+            --text: #f7fafc; --text-light: #a0aec0; --bg: #1a202c;
+            --card-bg: #2d3748; --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.2);
+            --border-color: #4a5568;
+        }
+
+   
+
+
+
+
+        
+        /* ===== Translation Floating Button ===== */
+     .custom-image-widget {
+            position: fixed !important;
+            top: 50px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            right: 0px;
+            z-index: 999;
+        }
+        
+        .custom-image {
+            width: 70px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+        
+        .custom-image-widget:hover .custom-image {
+            transform: scale(1.05);
+        }
+        
+        .custom-image-widget:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+              
+      /* ===== Translation Floating Button ===== */
+
+
+
+
+        
+        html { box-sizing: border-box; overflow-x: hidden; scroll-behavior: smooth; }
+        *, *:before, *:after { box-sizing: inherit; margin: 0; padding: 0; }
+
+        
+        body {
+            margin: 0;
+            padding-top: 120px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        .title {
+            color: var(--primary);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: var(--card-bg);
+            color: var(--text);
+        }
+
+        input[type="url"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: #c41270;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .result-container {
+            margin-top: 25px;
+            display: none;
+        }
+
+        .result-label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .result-box {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .result {
+            flex: 1;
+            word-break: break-all;
+            padding-right: 10px;
+            color: var(--text);
+        }
+
+        .copy-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .copy-btn:hover {
+            background-color: #c41270;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        @media (max-width: 640px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+        }
+        
+        .top-menu-bar {
+            position: fixed;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 2rem);
+            max-width: 1200px;
+            z-index: 1100;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0 1.5rem;
+            transition: top 0.3s ease-in-out;
+        }
+        .top-menu-bar.hidden {
+            top: -100px;
+        }
+
+        .top-menu-content { height: 70px; display: flex; align-items: center; justify-content: space-between; }
+        .logo-container { display: flex; align-items: center; gap: 1rem; }
+        #appLogo { height: 40px; width: 40px; object-fit: cover; border-radius: 8px; }
+        #appBrandNameDisplay { font-size: 1.5rem; font-weight: 600; color: var(--text); }
+        .top-menu-actions { display: flex; align-items: center; gap: 1rem; }
+        
+        .fab {
+            width: 40px; height: 40px; border-radius: 50%; background-color: var(--bg);
+            color: var(--text); border: 1px solid var(--border-color); display: flex;
+            justify-content: center; align-items: center; cursor: pointer; transition: all 0.2s ease;
+        }
+        .fab:hover { background-color: var(--border-color); }
+        
+        @media (max-width: 768px) {
+            .container { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+   
+       <div class="custom-image-widget" style="position: relative; display: inline-block;"> <!-- ADD THESE STYLES -->
+    <a href="https://bebell-digital-solutions.github.io/spreadsheet-id-generator">
+        <img class="custom-image" 
+             src="https://bucket.mlcdn.com/a/3336/3336910/images/2891bb0a192c808fe1bb53e3905fc787957c2085.png" 
+             alt="Eglish Translation"
+             style="display: block;"> <!-- Ensure image is block-level -->
+    </a>
+
+</div>
+
+
+
+
+<div class="container">
+    <div class="top-menu-bar">
+        <div class="top-menu-content">
+            <div class="logo-container">
+                <img id="appLogo" src="https://bucket.mlcdn.com/a/3336/3336910/images/7a8d827e98c4791a121f99ec3d8dd80f2a94ef5a.png" alt="Logo de la App">
+                <span id="appBrandNameDisplay">Magic Toolbox</span>
+            </div>
+            
+            <div class="top-menu-actions">
+                <!-- Ícono de Configuración -->
+                <div class="fab" id="settingsBtn" title="Configuración"><i class="fas fa-cog"></i></div>
+                
+                <!-- Ícono de Soporte -->
+                <div class="fab" id="supportBtn" title="Soporte" onclick="window.open('https://helpcenter.easygallery.website', '_blank')"><i class="fa fa-info-circle"></i></div>
+                
+                <!-- Ícono de Alternancia de Tema -->
+                <div class="fab" id="darkModeToggle" title="Alternar Tema"><i class="fas fa-moon"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 class="title">Generador de ID de Hoja de Cálculo</h2>
+        <p class="subtitle">Extrae el ID único de tu URL de Google Sheets gratis.</p>
+        
+        <div class="input-group">
+            <label for="spreadsheetUrl">URL de la Hoja de Cálculo</label>
+            <input type="url" id="spreadsheetUrl" placeholder="https://docs.google.com/spreadsheets/d/1Vm.../edit?gid=0#gid=0" autocomplete="off">
+        </div>
+        
+        <button class="btn" id="generateBtn">Generar ID</button>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-label">ID de Hoja de Cálculo Extraído:</div>
+            <div class="result-box">
+                <div class="result" id="result"></div>
+                <button class="copy-btn" id="copyBtn">Copiar al Portapapeles</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Herramienta simple para extraer IDs de Hojas de Cálculo de Google de las URLs</p>
+    </div>
+</div>
+
+<script>
+    // Inicializar Iconos de Lucide
+    lucide.createIcons();
+    
+    // Funcionalidad del interruptor de modo oscuro
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    
+    // Verificar la preferencia de tema guardada
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        darkModeToggle.setAttribute('title', 'Cambiar a Modo Claro');
+    }
+    
+    darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('theme', 'dark');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            darkModeToggle.setAttribute('title', 'Cambiar a Modo Claro');
+        } else {
+            localStorage.setItem('theme', 'light');
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            darkModeToggle.setAttribute('title', 'Cambiar a Modo Oscuro');
+        }
+    });
+    
+    // Funcionalidad del botón de configuración
+    document.getElementById('settingsBtn').addEventListener('click', () => {
+        alert('El panel de configuración se abriría aquí.');
+    });
+    
+    // Funcionalidad del Generador de ID de Hoja de Cálculo
+    const generateBtn = document.getElementById('generateBtn');
+    const spreadsheetUrl = document.getElementById('spreadsheetUrl');
+    const resultContainer = document.getElementById('resultContainer');
+    const result = document.getElementById('result');
+    const copyBtn = document.getElementById('copyBtn');
+    
+    // Funcionalidad para generar el ID
+    generateBtn.addEventListener('click', function() {
+        const url = spreadsheetUrl.value.trim();
+        
+        if (!url) {
+            alert('Por favor, ingresa una URL de hoja de cálculo');
+            return;
+        }
+        
+        // Expresión regular para coincidir con el ID de Google Spreadsheet
+        const regex = /\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/;
+        const match = url.match(regex);
+        
+        if (match && match[1]) {
+            result.textContent = match[1];
+            resultContainer.style.display = 'block';
+        } else {
+            alert('No se pudo encontrar un ID de Hoja de Cálculo válido en la URL proporcionada');
+            resultContainer.style.display = 'none';
+        }
+    });
+    
+    // Funcionalidad para copiar al portapapeles
+    copyBtn.addEventListener('click', function() {
+        const textToCopy = result.textContent;
+        
+        navigator.clipboard.writeText(textToCopy)
+            .then(() => {
+                // Retroalimentación visual de que el texto fue copiado
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = '¡Copiado!';
+                
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            })
+            .catch(err => {
+                console.error('Error al copiar: ', err);
+                alert('Error al copiar al portapapeles. Por favor, intenta de nuevo.');
+            });
+    });
+    
+    // Permitir generar con la tecla Enter
+    spreadsheetUrl.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            generateBtn.click();
+        }
+    });
+</script>
+</body>
+</html>
