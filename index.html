@@ -34,6 +34,44 @@
             --card-bg: #2d3748; --shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.2);
             --border-color: #4a5568;
         }
+
+   
+
+
+
+
+        
+        /* ===== Translation Floating Button ===== */
+     .custom-image-widget {
+            position: fixed !important;
+            top: 50px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            right: 0px;
+            z-index: 999;
+        }
+        
+        .custom-image {
+            width: 70px;
+            height: auto;
+            transition: transform 0.2s;
+        }
+        
+        .custom-image-widget:hover .custom-image {
+            transform: scale(1.05);
+        }
+        
+        .custom-image-widget:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+              
+      /* ===== Translation Floating Button ===== */
+
+
+
+
+        
         html { box-sizing: border-box; overflow-x: hidden; scroll-behavior: smooth; }
         *, *:before, *:after { box-sizing: inherit; margin: 0; padding: 0; }
 
@@ -232,6 +270,23 @@
     </style>
 </head>
 
+
+   
+       <div class="custom-image-widget" style="position: relative; display: inline-block;"> <!-- ADD THESE STYLES -->
+    <a href="https://bebell-digital-solutions.github.io/spreadsheet-id-generator/spanish">
+        <img class="custom-image" 
+             src="https://bucket.mlcdn.com/a/3336/3336910/images/2891bb0a192c808fe1bb53e3905fc787957c2085.png" 
+             alt="Spanish Translation"
+             style="display: block;"> <!-- Ensure image is block-level -->
+    </a>
+
+</div>
+
+
+
+
+
+    
 <body>
     <div class="container">
         <div class="top-menu-bar">
